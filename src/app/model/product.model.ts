@@ -4,10 +4,3 @@ export interface Product {
     price: number;
     quantity: number;
 }
-
-export interface PageProduct{
-    products: Product[];
-    page: number;
-    size: number;
-    totalPages: number;
-}

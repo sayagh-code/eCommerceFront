@@ -17,7 +17,7 @@ export class AdminProductsComponent implements OnInit{
   fullProducts! : Array<Product>;
   products! : Array<Product>;
   page : number = 0;
-  size : number = 5;
+  size : number = 4;
   totalPages : number = 0;
   searchFormGroup! : FormGroup;
   currentAction : string = "All";
@@ -58,6 +58,7 @@ export class AdminProductsComponent implements OnInit{
 
   handleSearchProducts() {
     this.currentAction="search";
+    this.page=0;
     let keyword = this.searchFormGroup.value.keyword;
     if(keyword)
       this.productService.searchProducts(keyword,this.fullProducts).subscribe({
