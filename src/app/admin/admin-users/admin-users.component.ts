@@ -15,7 +15,7 @@ export class AdminUsersComponent implements OnInit{
   fullCustomers! : Array<Customer>;
   customers! : Array<Customer>;
   page : number = 0;
-  size : number = 4;
+  size : number = 6;
   totalPages : number = 0;
   searchFormGroup! : FormGroup;
   currentAction : string = "All";

@@ -1,5 +1,5 @@
-<div class="w-full min-h-screen font-sans text-gray-900 bg-gray-50 flex">
-    <div class="flex-1 pb-8">
+<div class="w-full min-h-screen font-sans text-gray-900 bg-gray-50 flex pt-16">
+    <div class="flex-1">
       <div class="flex items-center justify-between py-5 px-10">
         <div>
           <h1 class="text-2xl font-semibold leading-relaxed text-gray-800">Customers List</h1>
@@ -45,9 +45,9 @@
         <tr *ngFor="let c of customers" class="hover:bg-gray-100 transition-colors group">
           <td class="flex gap-x-4 items-center py-3 pl-10">
             <input type="checkbox" class="w-6 h-6 text-indigo-600 rounded-md border-gray-300">
-            <img :src="" alt="" class="h-24 w-40 aspect-[3/2] rounded-lg object-cover object-top border border-gray-200">
+            <img :src="" alt="" class="h-10 w-10 aspect-[3/2] rounded-full object-cover object-top border border-gray-200">
             <div>
-              <a href="#" class="text-lg font-semibold text-gray-700">{{c.fullName}}</a>
+              <a href="#" class="text-lg font-semibold text-gray-700">{{c.username}}</a>
             </div>
           </td>
           <td class="font-medium text-center">{{c.phone}}</td>

@@ -5,6 +5,7 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { AdminTemplateComponent } from './admin/admin-template/admin-template.component';
 import { HomeComponent } from './customer/home/home.component';
+import { authenticationGuard } from './guards/authentication.guard';
 
 export const routes: Routes = [
     {path: "login", component: LoginComponent},
@@ -13,9 +14,13 @@ export const routes: Routes = [
     children:[
         {path: "products", component: AdminProductsComponent},
         {path: "users", component: AdminUsersComponent},
-    ]},
+    ],
+    canActivate : [authenticationGuard]
+    },
     {path: "user", component: TemplateComponent, 
     children:[
         {path: "home", component: HomeComponent},
-    ]},
+    ],
+    canActivate : [authenticationGuard]
+    },
 ];

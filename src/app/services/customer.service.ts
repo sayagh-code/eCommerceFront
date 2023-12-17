@@ -25,7 +25,7 @@ export class CustomerService {
   }
 
   public searchCustomers(keyword: string, customers: Customer[]): Observable<Customer[]>{
-    let filteredCustomers=customers.filter(p=>p.fullName.includes(keyword));
+    let filteredCustomers=customers.filter(c=>c.username.includes(keyword));
     return of(filteredCustomers);
 
   }
