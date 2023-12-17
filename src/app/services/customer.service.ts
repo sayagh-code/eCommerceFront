@@ -9,23 +9,24 @@ import { Customer } from '../model/customer.model';
 export class CustomerService {
 
   constructor(private http: HttpClient) {
-    
+
   }
 
-  public getAllProducts(): Observable<any>{
-    return this.http.get<any>(`http://localhost:8888/VISITOR-SERVICE/visitors`);
+  public getAllCustomers(): Observable<any>{
+    return this.http.get<any>(`http://localhost:8888/USER-SERVICE/visitors`);
   }
 
-  public getPageProducts(page: number, size: number): Observable<any>{
-    return this.http.get<any>(`http://localhost:8888/VISITOR-SERVICE/visitors`);
+  public getPageCustomers(page: number, size: number): Observable<any>{
+    return this.http.get<any>(`http://localhost:8888/USER-SERVICE/visitors`);
   }
 
-  public deleteProduct(id : string): Observable<any>{
-    return this.http.delete<any>(`http://localhost:8888/VISITOR-SERVICE/visitors/${id}`);
+  public deleteCustomer(id : string): Observable<any>{
+    return this.http.delete<any>(`http://localhost:8888/USER-SERVICE/visitors/${id}`);
   }
 
-  public searchProducts(keyword: string, products: Customer[]): Observable<Customer[]>{
-    let filteredProducts=products.filter(c=>c.name.includes(keyword));
-    return of(filteredProducts);
+  public searchCustomers(keyword: string, customers: Customer[]): Observable<Customer[]>{
+    let filteredCustomers=customers.filter(p=>p.fullName.includes(keyword));
+    return of(filteredCustomers);
+
   }
 }

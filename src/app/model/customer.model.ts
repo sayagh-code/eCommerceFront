@@ -1,4 +1,9 @@
 export interface Customer {
     id: string;
-    name: string;
+    fullName: string;
+    email:string ;
+    phone:string ;
+    address:string ;
+    password:string ;
+    type:string ;
 }
