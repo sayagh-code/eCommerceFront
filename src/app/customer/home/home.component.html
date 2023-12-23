@@ -25,28 +25,26 @@
         <div>
             <p class="font-bold text-gray-700">Filtered Type</p>
             <div class="flex justify-between flex-wrap">
-                <button class="m-1 px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">All</button>
-                <button class="m-1 px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">Beauty</button>
-                <button class="m-1 px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">Fashion</button>
-                <button class="m-1 px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">Electronics</button>
+                <button *ngFor="let c of categories" (click)="handleGetProductsByCategory(c.nameCat)" class="m-1 px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">{{c.nameCat}}</button>
             </div>
         </div>
         <div>
             <p class="font-bold text-gray-700">Filter price</p>
             <div class="flex justify-between max-w-[390px] w-full">
-                <button class="px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">$</button>
-                <button class="px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">$$</button>
-                <button class="px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">$$$</button>
-                <button class="px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">$$$$</button>
+                <button (click)="filterPrice(10)" class="px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">$</button>
+                <button (click)="filterPrice(100)" class="px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">$$</button>
+                <button (click)="filterPrice(1000)" class="px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">$$$</button>
+                <button (click)="filterPrice(10000)" class="px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">$$$$</button>
+                <button (click)="filterPrice(100000)" class="px-3 py-1 rounded-full border-2 border-blue-600 bg-white text-blue-600 mx-2 bottom-4 dark:hover:text-white dark:hover:bg-blue-600">$$$$$</button>
             </div>
         </div>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
-        <div *ngFor="let p of [].constructor(12)" class="border shadow-lg hover:scale-105 duration-300 rounded-lg">
-            <img class="w-full h-[200px] object-cover rounded-t-lg" src="https://i.ebayimg.com/images/g/tfUAAOSwgp5iZ2Mh/s-l1200.webp" alt="/">
+        <div *ngFor="let p of products" class="border shadow-lg hover:scale-105 duration-300 rounded-lg">
+            <img class="w-full h-[200px] object-cover rounded-t-lg" src="http://localhost:8888/PRODUCT-SERVICE/images/{{p.image}}" alt="/">
             <div class="flex justify-between px-2 py-4">
-                <p class="font-bold"><!--{{p.name}}-->socks</p>
-                <p><span class="bg-blue-500 text-white p-1 rounded-full"><!--{{p.price}}-->12 MAD</span></p>
+                <p class="font-bold">{{p.name}}</p>
+                <p><span class="bg-blue-500 text-white p-1 rounded-full">{{p.price}}</span></p>
             </div>
         </div>
     </div>

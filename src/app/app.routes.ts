@@ -21,6 +21,6 @@ export const routes: Routes = [
     children:[
         {path: "home", component: HomeComponent},
     ],
-    canActivate : [authenticationGuard]
+    //canActivate : [authenticationGuard]
     },
 ];

@@ -49,12 +49,12 @@
           <tr *ngFor="let p of products" class="hover:bg-gray-100 transition-colors group">
             <td class="flex gap-x-4 items-center py-3 pl-10">
               <input type="checkbox" class="w-6 h-6 text-indigo-600 rounded-md border-gray-300">
-              <img :src="" alt="" class="h-24 w-40 aspect-[3/2] rounded-lg object-cover object-top border border-gray-200">
+              <img src="http://localhost:8888/PRODUCT-SERVICE/images/{{p.image}}" alt="" class="h-24 w-40 aspect-[3/2] rounded-lg object-cover border border-gray-200">
               <div>
                 <a href="#" class="text-lg font-semibold text-gray-700">{{p.name}}</a>
               </div>
             </td>
-            <td class="font-medium text-center">cat</td>
+            <td class="font-medium text-center">{{p.category.nameCat}}</td>
             <td class="font-medium text-center">{{p.price}}</td>
             <td class="font-medium text-center">{{p.quantity}}</td>
             <td class="text-center">

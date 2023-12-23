@@ -17,7 +17,7 @@ export class AdminProductsComponent implements OnInit{
   fullProducts! : Array<Product>;
   products! : Array<Product>;
   page : number = 0;
-  size : number = 4;
+  size : number = 3;
   totalPages : number = 0;
   searchFormGroup! : FormGroup;
   currentAction : string = "All";
@@ -35,7 +35,9 @@ export class AdminProductsComponent implements OnInit{
     this.productService.getAllProducts().subscribe({
       next: (data) =>{
         let index = this.page*this.size;
+        console.log(data);
         this.products=[...data._embedded.products];
+        console.log(this.products);
         this.fullProducts=[...data._embedded.products];
         this.totalPages = ~~(this.products.length/this.size);
         if(this.products.length % this.size != 0)
