@@ -6,22 +6,25 @@ import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { AdminTemplateComponent } from './admin/admin-template/admin-template.component';
 import { HomeComponent } from './customer/home/home.component';
 import { authenticationGuard } from './guards/authentication.guard';
-import { CreateProductsComponent } from './admin/create-products/create-products.component';
+import {CreateProductsComponent} from "./admin/create-products/create-products.component";
+import {ProductDetailsComponent} from "./customer/product-details/product-details.component";
 
 export const routes: Routes = [
     {path: "login", component: LoginComponent},
     {path: "", component: LoginComponent},
-    {path: "admin", component: AdminTemplateComponent, 
+    {path: "admin", component: AdminTemplateComponent,
     children:[
         {path: "products", component: AdminProductsComponent},
         {path: "users", component: AdminUsersComponent},
         {path: "createProducts", component: CreateProductsComponent},
     ],
-    //canActivate : [authenticationGuard]
+    canActivate : [authenticationGuard]
     },
-    {path: "user", component: TemplateComponent, 
+    {path: "user", component: TemplateComponent,
     children:[
         {path: "home", component: HomeComponent},
+        {path: "details", component: ProductDetailsComponent},
     ],
+    //canActivate : [authenticationGuard]
     },
 ];

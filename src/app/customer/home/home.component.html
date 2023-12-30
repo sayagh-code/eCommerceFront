@@ -41,7 +41,7 @@
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
         <div *ngFor="let p of products" class="border shadow-lg hover:scale-105 duration-300 rounded-lg">
-            <img class="w-full h-[200px] object-cover rounded-t-lg" src="http://localhost:8888/PRODUCT-SERVICE/images/{{p.image}}" alt="/">
+            <img class="w-full h-[200px] object-cover rounded-t-lg" src="{{p.image}}" alt="/">
             <div class="flex justify-between px-2 py-4">
                 <p class="font-bold">{{p.name}}</p>
                 <p><span class="bg-blue-500 text-white p-1 rounded-full">{{p.price}}</span></p>
