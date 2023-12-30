@@ -3,12 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../model/product.model';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ImageStorageService } from '../../services/image-storage.service';
+import { Observable, from } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-admin-products',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './admin-products.component.html',
   styleUrl: './admin-products.component.css'
 })
@@ -21,8 +24,13 @@ export class AdminProductsComponent implements OnInit{
   totalPages : number = 0;
   searchFormGroup! : FormGroup;
   currentAction : string = "All";
+  link! : any;
 
-  public constructor(private productService: ProductService, private fb : FormBuilder){}
+  public constructor(
+    private productService: ProductService, 
+    private fb : FormBuilder, 
+    private imageService: ImageStorageService
+  ){}
 
   ngOnInit(): void {
     this.searchFormGroup= this.fb.group({
@@ -35,9 +43,7 @@ export class AdminProductsComponent implements OnInit{
     this.productService.getAllProducts().subscribe({
       next: (data) =>{
         let index = this.page*this.size;
-        console.log(data);
         this.products=[...data._embedded.products];
-        console.log(this.products);
         this.fullProducts=[...data._embedded.products];
         this.totalPages = ~~(this.products.length/this.size);
         if(this.products.length % this.size != 0)
@@ -54,6 +60,7 @@ export class AdminProductsComponent implements OnInit{
       next: (data)=>{
         let index = this.products.indexOf(p);
         this.products.splice(index, 1);
+        this.imageService.deleteImage(p.image);
       }
     });
   }

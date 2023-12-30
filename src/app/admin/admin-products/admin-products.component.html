@@ -17,7 +17,7 @@
           </button>
         </form>
         <button class="inline-flex gap-x-2 items-center py-2.5 px-6 text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1">
-          <span class="text-sm font-semibold tracking-wide">Create</span>
+          <span class="text-sm font-semibold tracking-wide" routerLink="/admin/createProducts">Create</span>
         </button>
       </div>      
 
@@ -49,7 +49,7 @@
           <tr *ngFor="let p of products" class="hover:bg-gray-100 transition-colors group">
             <td class="flex gap-x-4 items-center py-3 pl-10">
               <input type="checkbox" class="w-6 h-6 text-indigo-600 rounded-md border-gray-300">
-              <img src="http://localhost:8888/PRODUCT-SERVICE/images/{{p.image}}" alt="" class="h-24 w-40 aspect-[3/2] rounded-lg object-cover border border-gray-200">
+              <img src={{p.image}} alt="" class="h-24 w-40 aspect-[3/2] rounded-lg object-cover border border-gray-200">
               <div>
                 <a href="#" class="text-lg font-semibold text-gray-700">{{p.name}}</a>
               </div>
