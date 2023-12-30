@@ -8,9 +8,11 @@ import { HomeComponent } from './customer/home/home.component';
 import { authenticationGuard } from './guards/authentication.guard';
 import {CreateProductsComponent} from "./admin/create-products/create-products.component";
 import {ProductDetailsComponent} from "./customer/product-details/product-details.component";
+import {SignupComponent} from "./signup/signup.component";
 
 export const routes: Routes = [
     {path: "login", component: LoginComponent},
+    {path: "signup", component: SignupComponent},
     {path: "", component: LoginComponent},
     {path: "admin", component: AdminTemplateComponent,
     children:[
