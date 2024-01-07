@@ -17,6 +17,10 @@ export class ProductService {
     return this.http.get<any>(`http://localhost:8888/PRODUCT-SERVICE/products`);
   }
 
+  public getProductById(id : string): Observable<any>{
+    return this.http.get<any>(`http://localhost:8888/PRODUCT-SERVICE/products/${id}`);
+  }
+
   public getProductsByCategory(category: string): Observable<any>{
     return this.http.get<any>(`http://localhost:8888/PRODUCT-SERVICE/products/search/findByCategory_NameCat?nameCat=${category}`);
   }

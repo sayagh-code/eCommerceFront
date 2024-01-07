@@ -4,19 +4,26 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../model/product.model';
 import { Category } from '../../model/category.model';
 import { CategoryService } from '../../services/category.service';
+import { Router, RouterLink } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
+
   products! : Array<Product>;
   categories! : Category[];
   
-  constructor(private productService: ProductService, private categoryService: CategoryService){}
+  constructor(
+    private productService: ProductService, 
+    private categoryService: CategoryService,
+  ){}
 
   ngOnInit(): void {
     this.handleGetAllProducts();

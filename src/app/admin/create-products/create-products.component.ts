@@ -67,8 +67,7 @@ export class CreateProductsComponent implements OnInit{
         this.product.price=this.userFormGroup.value.price;
         this.product.quantity=this.userFormGroup.value.quantity;
         this.product.category={id: category.id, nameCat: category.nameCat};
-        let composedName=this.product.id+this.image.name;
-        this.imageService.uploadImage(this.image, composedName).then((value)=>{
+        this.imageService.uploadImage(this.image, this.image.name).then((value)=>{
           this.product.image = value!;
           this.productService.addProduct(this.product).subscribe({
             next: (data)=>{

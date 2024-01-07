@@ -9,11 +9,12 @@ import { authenticationGuard } from './guards/authentication.guard';
 import {CreateProductsComponent} from "./admin/create-products/create-products.component";
 import {ProductDetailsComponent} from "./customer/product-details/product-details.component";
 import {SignupComponent} from "./signup/signup.component";
+import { CartComponent } from './customer/cart/cart.component';
 
 export const routes: Routes = [
     {path: "login", component: LoginComponent},
     {path: "signup", component: SignupComponent},
-    {path: "", component: LoginComponent},
+    {path: "", redirectTo: "/user/home", pathMatch: 'full'},
     {path: "admin", component: AdminTemplateComponent,
     children:[
         {path: "products", component: AdminProductsComponent},
@@ -25,8 +26,8 @@ export const routes: Routes = [
     {path: "user", component: TemplateComponent,
     children:[
         {path: "home", component: HomeComponent},
-        {path: "details", component: ProductDetailsComponent},
+        {path: "productDetails/:id", component: ProductDetailsComponent},
+        {path: "cart", component: CartComponent},
     ],
-    //canActivate : [authenticationGuard]
     },
 ];

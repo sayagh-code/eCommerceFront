@@ -1,21 +1,25 @@
 import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ ReactiveFormsModule, JsonPipe, CommonModule ],
+  imports: [ ReactiveFormsModule, JsonPipe, CommonModule, RouterLink ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+
 export class LoginComponent {
+  
   userFormGroup! : FormGroup;
   errorMessage : any;
+
   constructor(private fb : FormBuilder, private authService : AuthenticationService, private router : Router) {
   }
+
   ngOnInit() {
     this.userFormGroup = this.fb.group({
       username : this.fb.control(""),
