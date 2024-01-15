@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../model/product.model';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
+import { OrderService } from '../../services/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,9 +15,10 @@ import { CartService } from '../../services/cart.service';
 export class CartComponent implements OnInit{
 
   cart! : Array<Product>;
+  user : any;
 
-  constructor(private cartService: CartService){
-
+  constructor(private cartService: CartService, private order: OrderService, private router: Router){
+    this.cart=[]
   }
 
   ngOnInit(): void {
@@ -30,4 +33,16 @@ export class CartComponent implements OnInit{
     return total
   }
 
+  billing(){
+    if(this.cart.length!=0){  
+      this.user=JSON.parse(localStorage.getItem("authUser")!)
+      this.order.saveBill(this.cart, this.user.id).subscribe({
+        next: ()=>{
+          localStorage.removeItem("Cart");
+          this.cart=[];
+          this.router.navigateByUrl(`/user/home`);
+        }
+      })
+    }
+  }
 }

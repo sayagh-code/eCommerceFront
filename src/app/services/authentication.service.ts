@@ -32,7 +32,7 @@ export class AuthenticationService {
 
   public authenticateUser(appUser : Customer): Observable<boolean>{
     this.authenticatedUser = appUser;
-    localStorage.setItem("authUser", JSON.stringify({username:appUser.username, roles:appUser.role, jwt:"JWT_TOKEN"}));
+    localStorage.setItem("authUser", JSON.stringify({id: appUser.id ,username: appUser.username, roles: appUser.role, jwt:"JWT_TOKEN"}));
     return of(true);
   }
 

@@ -18,6 +18,11 @@
                                 {{p.category.nameCat}}
                             </p>
                         </div>
+                        <div class="flex-1 min-w-0 ms-4">
+                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                x{{p.quantity}}
+                            </p>
+                        </div>
                         <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
                             ${{p.price*p.quantity}}
                         </div>
@@ -32,7 +37,7 @@
                 </li>
             </ul>
             <div class="w-auto flex justify-center mt-8">
-                <button class="text-gray-200 bg-blue-600 rounded-xl px-24 py-3 text-lg">Confirm Order</button>
+                <button class="text-gray-200 bg-blue-600 rounded-xl px-24 py-3 text-lg" (click)=billing()>Confirm Order</button>
             </div>
         </div>
     </div>

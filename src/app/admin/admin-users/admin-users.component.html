@@ -27,11 +27,11 @@
         <tr class="text-sm font-medium text-gray-700 border-b border-gray-200">
           <td class="pl-10">
             <div class="flex items-center gap-x-4">
-              <input
+              <!--<input
                 type="checkbox"
                 class="w-6 h-6 text-indigo-600 rounded-md border-gray-300"
                 indeterminate="indeterminate"
-              />
+              />-->
               <span>Customer Name</span>
             </div>
           </td>
@@ -44,8 +44,10 @@
         <tbody>
         <tr *ngFor="let c of customers" class="hover:bg-gray-100 transition-colors group">
           <td class="flex gap-x-4 items-center py-3 pl-10">
-            <input type="checkbox" class="w-6 h-6 text-indigo-600 rounded-md border-gray-300">
-            <img :src="" alt="" class="h-10 w-10 aspect-[3/2] rounded-full object-cover object-top border border-gray-200">
+            <!--<input type="checkbox" class="w-6 h-6 text-indigo-600 rounded-md border-gray-300">-->
+            <div class="h-10 w-10 px-4 py-1 aspect-[3/2] rounded-full object-cover object-top border border-gray-200 bg-gray-700">
+              <span class="text-blue-800 font-bold">{{c.username[0]}}</span>
+            </div>
             <div>
               <a href="#" class="text-lg font-semibold text-gray-700">{{c.username}}</a>
             </div>
@@ -63,7 +65,6 @@
         </tr>
         </tbody>
       </table>
-  
       <div class="flex gap-x-2 justify-center pt-8">
         <button class="flex justify-center items-center w-8 h-8">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 to-gray-800 stroke-current hover:text-indigo-600">
@@ -76,7 +77,7 @@
           [ngClass]="i === this.page ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-indigo-600'"
           (click)="gotoPage(i)"
         >
-          {{i}}
+          {{i+1}}
         </button>
         <button class="flex justify-center items-center w-8 h-8">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 to-gray-800 stroke-current hover:text-indigo-600">

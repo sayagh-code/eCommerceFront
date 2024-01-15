@@ -16,8 +16,8 @@
             </svg>            
           </button>
         </form>
-        <button class="inline-flex gap-x-2 items-center py-2.5 px-6 text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1">
-          <span class="text-sm font-semibold tracking-wide" routerLink="/admin/createProducts">Create</span>
+        <button routerLink="/admin/createProducts" class="inline-flex gap-x-2 items-center py-2.5 px-6 text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1">
+          <span class="text-sm font-semibold tracking-wide">Create</span>
         </button>
       </div>      
 
@@ -30,25 +30,19 @@
           <tr class="text-sm font-medium text-gray-700 border-b border-gray-200">
             <td class="pl-10">
               <div class="flex items-center gap-x-4">
-                <input
-                  type="checkbox"
-                  class="w-6 h-6 text-indigo-600 rounded-md border-gray-300"
-                  indeterminate="indeterminate"
-                />
                 <span>Product Name</span>
               </div>
             </td>
             <td class="py-4 px-4 text-center">Categorie</td>
             <td class="py-4 px-4 text-center">Price</td>
             <td class="py-4 px-4 text-center">Quantity</td>
-            <td class="py-4 px-4 text-center">Rate</td>
+            <!--<td class="py-4 px-4 text-center">Rate</td>-->
             <td class="py-4 pr-10 pl-4 text-center"></td>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let p of products" class="hover:bg-gray-100 transition-colors group">
             <td class="flex gap-x-4 items-center py-3 pl-10">
-              <input type="checkbox" class="w-6 h-6 text-indigo-600 rounded-md border-gray-300">
               <img src={{p.image}} alt="" class="h-24 w-40 aspect-[3/2] rounded-lg object-cover border border-gray-200">
               <div>
                 <a href="#" class="text-lg font-semibold text-gray-700">{{p.name}}</a>
@@ -57,10 +51,10 @@
             <td class="font-medium text-center">{{p.category.nameCat}}</td>
             <td class="font-medium text-center">{{p.price}}</td>
             <td class="font-medium text-center">{{p.quantity}}</td>
-            <td class="text-center">
+            <!--<td class="text-center">
               <span class="font-medium">4</span>
               <span class="text-gray-400">/5</span>
-            </td>
+            </td>-->
             <td>
               <button class="inline-block" (click)="handleDeleteProduct(p)">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-red-600">
@@ -84,7 +78,7 @@
           [ngClass]="i === this.page ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-indigo-600'"
           (click)="gotoPage(i)"
         >
-          {{i}}
+          {{i+1}}
         </button>
         <button class="flex justify-center items-center w-8 h-8">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 to-gray-800 stroke-current hover:text-indigo-600">

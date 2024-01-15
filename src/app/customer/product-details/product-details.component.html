@@ -2,7 +2,7 @@
   <div class='grid gap-5 p-10'>
     <div class='dark:bg-gray-800 grid md:grid-cols-6 gap-10 bg-white rounded-lg shadow-2xl shadow-blue-800 p-4'>
       <div class='col-span-3 h-[250px] md:h-[450px] relative'>
-        <img src="{{product.image}}" alt="banniere"  class='absolute w-full h-full object-cover rounded-xl'/>
+        <img :src="{{product.image}}" alt="banniere"  class='absolute w-full h-full object-cover rounded-xl'/>
       </div>
       <div class='col-span-3 flex flex-col justify-around'>
         <h2 class="mb-2 text-xl font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">{{product.name}}</h2>
@@ -14,7 +14,7 @@
         <dl class="flex items-center space-x-6">
           <div>
             <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Category</dt>
-            <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{category.nameCat}}</dd>
+            <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{product.category.nameCat}}</dd>
           </div>
           <div>
             <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Quantity</dt>
@@ -25,6 +25,29 @@
     </div>
   </div>
   <div class="flex justify-center mt-4">
-    <button (click)="addToCart(product)" class="text-gray-200 bg-blue-600 rounded-lg px-40 py-3 text-lg hover:shadow-lg focus:shadow-inner focus:shadow-gray-300">Add to Cart</button>
+    <button (click)="addToCart()" class="text-gray-200 bg-blue-600 rounded-lg px-40 py-3 text-lg hover:shadow-lg focus:shadow-inner focus:shadow-gray-300">Add to Cart</button>
+  </div>
+  <h2 class='text-black font-bold md:text-xl pt-16 px-8'>Similar products</h2>
+  <div class='relative flex items-center group'>
+    <button class="bg-white left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block" (click)="slideLeft()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 to-gray-800 stroke-current hover:text-indigo-600">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+    </button>
+    <div id="recommendations" class='w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative'>
+          <div *ngFor="let r of recommendedProducts" [ngClass]="{'hidden': r.id === product.id}" class='w-[160px] sm:w-[200px] md:w-[240px] lg-[200px] inline-block cursor-pointer relative p-2'>
+            <img class='w-full h-64 block' src="{{r.image}}" alt="" />
+            <button (click)="redirect(r.id)" class='absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white'>
+                <p class='white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center'>
+                  {{r.name}}
+                </p>
+            </button>
+        </div>
+    </div>
+    <button class="bg-white right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block" (click)="slideRight()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 to-gray-800 stroke-current hover:text-indigo-600">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>          
+    </button>
   </div>
 </div>
